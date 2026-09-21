@@ -1,0 +1,38 @@
+name: variables learning
+on: push
+
+env:
+    app_name: "My devops app"
+    version: "1.0.0"
+    global_env: "dev"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        env:
+            global_env: "stage"
+        
+        steps:
+            - name: Print the app config
+              run: |
+                echo "Application: $app_name"
+                echo "Verson: $version"
+                echo "Environment: $global_env"
+
+            - name: create config file
+              run: |
+                echo "Application: $app_name" > config.txt
+                echo "Verson: $version" >> config.txt
+                echo "Environment: $global_env" >> config.txt
+
+            - name: upload config file
+              uses: actions/upload-artifact@v7
+              with:
+                name: app-config
+                path: config.txt
+
+
+
+        
+
+          
