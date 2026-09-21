@@ -1,0 +1,47 @@
+name: Checkout & Artifacts
+on: push
+
+jobs:
+    Check-repo:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: downloading the repo in the runner
+              uses: actions/checkout@v7
+
+            - name: list the file
+              run: ls -al
+
+            - name: read the file
+              run: cat app.txt
+
+            - name: Append text content in the app.txt
+              run: echo "This is the new appended content in the app.txt file." >> app.txt
+
+            - name: Rename app.txt to build.txt
+              run: mv app.txt build.txt
+
+            - name: upload build artifact
+              uses: actions/upload-artifact@v7
+              with:
+                name: build artifact
+                path: build.txt
+
+    Upload-repo:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: download the build artifact
+              uses: actions/download-artifact@v7
+              with:
+                name: build artifact
+                path: .
+
+            - name: show the file downloaded
+              run: cat build.txt
+            
+            
+
+
+            
+
