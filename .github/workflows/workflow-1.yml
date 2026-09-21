@@ -1,0 +1,17 @@
+name: First Workflow
+on: push
+
+jobs:
+    hello:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: print hello message
+              run: echo "Hello from linux world"
+
+            - name: show uptime
+              run: uptime
+
+            - name: show directoris
+              run: ls -al
+
