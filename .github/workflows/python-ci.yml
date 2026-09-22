@@ -3,10 +3,14 @@ on: push
 
 jobs:
     test:
-        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                os: [ubuntu-latest, Ubuntu-22.04]
+
+        runs-on: ${{ matrix.os }}
         steps:
             - name: check out the repo
-              uses: actions/checkout@v7
+              uses: actions/checkout@v4
             
             - name: listing the available files
               run: ls -al
