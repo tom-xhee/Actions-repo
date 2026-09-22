@@ -1,0 +1,28 @@
+name: python app testing
+on: push
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: check out the repo
+              uses: actions/checkout@v7
+            
+            - name: listing the available files
+              run: ls -al
+
+            - name: install the packages
+              run: pip install -r requirements.txt
+
+            - name: testing the app
+              run: pytest test_calculator.py
+
+            - name: exporting the results
+              run: pytest test_calculator.py > results.txt
+
+            - name: upload
+              uses: actions/upload-artifact@v7
+              with:
+                name: test-result
+                path: results.txt
+              
