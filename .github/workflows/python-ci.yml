@@ -12,13 +12,13 @@ jobs:
               run: ls -al
 
             - name: install the packages
-              run: pip install -r requirements.txt
+              run: pip install -r cal-app/requirements.txt
 
             - name: testing the app
-              run: pytest test_calculator.py
+              run: pytest cal-app/test_calculator.py
 
             - name: exporting the results
-              run: pytest test_calculator.py > results.txt
+              run: pytest cal-app/test_calculator.py > results.txt
 
             - name: upload
               uses: actions/upload-artifact@v7
