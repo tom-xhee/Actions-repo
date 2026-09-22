@@ -1,4 +1,4 @@
-name: python app testing
+name: python app test
 on: push
 
 jobs:
@@ -26,3 +26,4 @@ jobs:
                 name: test-result
                 path: results.txt
               
+
