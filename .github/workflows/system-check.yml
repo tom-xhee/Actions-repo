@@ -1,0 +1,21 @@
+name: Health Check Yaml
+on: push
+
+jobs:
+    check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repo
+              uses: actions/checkout@v7
+              
+            - name: list the files
+              run: ls -al
+
+            - name: run the script
+              run: ./health-check/system-check.sh
+
+            - name: upload the file
+              uses: actions/upload-artifact@v7
+              with:
+                name: health-check
+                path: health-check.txt
