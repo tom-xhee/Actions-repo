@@ -14,7 +14,7 @@ jobs:
             - name: run the script
               run: | 
                 cd health-check
-                sudo chmod +x system-check.sh
+                chmod +x system-check.sh
                 ./system-check.sh
 
 
@@ -22,4 +22,4 @@ jobs:
               uses: actions/upload-artifact@v7
               with:
                 name: health-check
-                path: system-check/health-check.txt
+                path: health-check/health-check.txt
