@@ -12,7 +12,10 @@ jobs:
               run: ls -al
 
             - name: run the script
-              run: ./health-check/system-check.sh
+              run: | 
+                sudo chmod +x /health-check/system-check.sh
+                ./health-check/system-check.sh
+
 
             - name: upload the file
               uses: actions/upload-artifact@v7
