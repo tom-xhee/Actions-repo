@@ -13,12 +13,13 @@ jobs:
 
             - name: run the script
               run: | 
-                sudo chmod +x /health-check/system-check.sh
-                ./health-check/system-check.sh
+                cd health-check
+                sudo chmod +x system-check.sh
+                ./system-check.sh
 
 
             - name: upload the file
               uses: actions/upload-artifact@v7
               with:
                 name: health-check
-                path: health-check.txt
+                path: system-check/health-check.txt
