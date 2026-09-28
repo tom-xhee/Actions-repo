@@ -7,7 +7,7 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: build
-              run: docker build -t mdfaiz01/sample-image:test -f docker/Dockerfile .
+              run: docker build -t mdfaiz01/sample-image:test -f docker/Dockerfile docker
 
             - name: run container
               run: docker run --rm mdfaiz01/sample-image:test echo "Container is alive!"
@@ -20,7 +20,7 @@ jobs:
             - name: Check out the repo
               uses: actions/checkout@v4
 
-              
+
             - name: login to docker hub
               uses: docker/login-action@v4
               with:
