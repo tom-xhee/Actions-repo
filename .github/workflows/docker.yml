@@ -17,6 +17,7 @@ jobs:
             - name: build and push
               uses: docker/build-push-action@v7
               with:
+                context: docker/
                 push: true
                 tags: mdfaiz01/sample-image
                 
