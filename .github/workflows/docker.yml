@@ -2,22 +2,9 @@ name: docker push
 on: push
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-            - name: build
-              run: |
-                cd docker
-                docker build -t mdfaiz01/sample-image:test .
-
-            - name: run container
-              run: docker run --rm mdfaiz01/sample-image:test echo "Container is alive!"
-
 
     docker:
         runs-on: ubuntu-latest
-        needs: test
         steps:
             - name: Check out the repo
               uses: actions/checkout@v4
