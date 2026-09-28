@@ -9,7 +9,7 @@ jobs:
             - name: build
               run: |
                 cd docker
-                docker build -t mdfaiz01/sample-image:test -f .
+                docker build -t mdfaiz01/sample-image:test .
 
             - name: run container
               run: docker run --rm mdfaiz01/sample-image:test echo "Container is alive!"
@@ -33,7 +33,8 @@ jobs:
             - name: build and push
               uses: docker/build-push-action@v7
               with:
-                context: .
+                context: docker
+                file: docker/Dockerfile
                 push: true
                 tags: mdfaiz01/sample-image:latest
                 
