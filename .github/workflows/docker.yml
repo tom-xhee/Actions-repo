@@ -7,7 +7,9 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: build
-              run: docker build -t mdfaiz01/sample-image:test -f docker/Dockerfile docker
+              run: |
+                cd docker
+                docker build -t mdfaiz01/sample-image:test -f .
 
             - name: run container
               run: docker run --rm mdfaiz01/sample-image:test echo "Container is alive!"
@@ -32,7 +34,6 @@ jobs:
               uses: docker/build-push-action@v7
               with:
                 context: .
-                file: docker/Dockerfile
                 push: true
                 tags: mdfaiz01/sample-image:latest
                 
