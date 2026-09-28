@@ -8,7 +8,7 @@ WORKDIR /docker-app
 COPY docker/requirements.txt .
 RUN pip install -r docker/requirements.txt
 
-COPY /docker .
+COPY docker .
 
 # Expose port
 EXPOSE 5000
