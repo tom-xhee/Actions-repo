@@ -1,0 +1,22 @@
+name: docker push
+on: push
+
+jobs:
+    docker:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out the repo
+              uses: actions/checkout@v4
+
+            - name: login to docker hub
+              uses: docker/login-action@v4
+              with:
+                username: ${{ vars.DOCKERHUB_USERNAME }}
+                password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+            - name: build and push
+              uses: docker/build-push-action@v7
+              with:
+                push: true
+                tags: mdfaiz01/sample-image
+                
