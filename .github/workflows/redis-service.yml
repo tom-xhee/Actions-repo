@@ -1,0 +1,26 @@
+name: redis service
+on:
+    workflow_dispatch:
+
+jobs:
+    container-test:
+        runs-on: ubuntu-latest
+
+        container:
+            image: ubuntu:22.04
+
+        steps:
+            - name: Install Redis-cli
+              run: |
+                apt-get update
+                apt-get install -y redis-tools
+            
+            - name: test networking
+              run: redis-cli -h redis -p 6379 ping
+              
+        services:
+            name: redis
+            image: redis:7
+
+
+
