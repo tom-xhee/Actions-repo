@@ -1,0 +1,31 @@
+name: postgreSQL job
+on:
+    workflow_dispatch:
+    push:
+    
+jobs:
+    Job-conatiner:
+        runs-on: ubuntu-latest
+
+        container:
+            image: ubuntu:22.04
+
+        services:
+            postgres:
+                image: postgres:16
+                env:
+                   POSTGRES_USER: devuser
+                   POSTGRES_PASSWORD: devpass
+                   POSTGRES_DB: testdb
+
+        steps:
+            - name: install postgres client
+              run: |
+                apt-get update
+                apt-get install -y postgresql-client
+
+
+
+
+
+
