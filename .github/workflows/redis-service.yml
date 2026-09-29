@@ -17,10 +17,11 @@ jobs:
             
             - name: test networking
               run: redis-cli -h redis -p 6379 ping
-              
+
         services:
-            name: redis
-            image: redis:7
+            redis:
+                image: redis:7
+
 
 
 
